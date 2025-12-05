@@ -19,7 +19,7 @@ export default function HowItWorks() {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
         <div
-          className="p-6 rounded-2xl bg-white/3 border border-white/8 backdrop-blur-md"
+          className="p-6 rounded-2xl bg-white/3 border border-white/8 backdrop-blur-md cursor-pointer"
           data-aos="fade-up"
           data-aos-delay="120"
         >
@@ -32,7 +32,7 @@ export default function HowItWorks() {
         </div>
 
         <div
-          className="p-6 rounded-2xl bg-white/3 border border-white/8 backdrop-blur-md"
+          className="p-6 rounded-2xl bg-white/3 border border-white/8 backdrop-blur-md cursor-pointer"
           data-aos="fade-up"
           data-aos-delay="160"
         >
@@ -44,7 +44,7 @@ export default function HowItWorks() {
         </div>
 
         <div
-          className="p-6 rounded-2xl bg-white/3 border border-white/8 backdrop-blur-md"
+          className="p-6 rounded-2xl bg-white/3 border border-white/8 backdrop-blur-md cursor-pointer"
           data-aos="fade-up"
           data-aos-delay="200"
         >
