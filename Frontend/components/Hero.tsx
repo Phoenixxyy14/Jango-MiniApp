@@ -32,7 +32,7 @@ export default function Hero() {
         >
           Save 1% Daily.
           <br />
-          <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 via-purple-500 to-purple-600">
+          <span className="bg-clip-text text-transparent bg-linear-to-r from-white via-blue-500 to-[#0096c7]">
             Onchain.
           </span>
         </motion.h1>
@@ -48,7 +48,7 @@ export default function Hero() {
         <div className="mt-8 flex flex-col sm:flex-row items-center sm:items-start gap-4">
           <motion.button
             whileHover={{ y: -6, scale: 1.02 }}
-            className="rounded-full px-6 py-3 bg-linear-to-r from-purple-500 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transform transition"
+            className="rounded-full px-6 py-3 bg-[#0096c7] text-white font-semibold shadow-lg hover:scale-105 transform transition"
           >
             Start Saving
           </motion.button>

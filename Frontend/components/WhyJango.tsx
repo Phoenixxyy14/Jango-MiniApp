@@ -3,7 +3,10 @@
 export default function WhyJango() {
   return (
     <section className="mt-16">
-      <h2 className="text-3xl font-bold text-center" data-aos="fade-up">
+      <h2
+        className="text-5xl font-bold text-center text-[#0096c7]"
+        data-aos="fade-up"
+      >
         Why Jango?
       </h2>
       <p
@@ -16,7 +19,7 @@ export default function WhyJango() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
         <div
-          className="p-5 rounded-xl bg-white/3 border border-white/8 backdrop-blur-md flex items-start gap-4"
+          className="p-5 rounded-xl bg-[#0096c7] border border-[#0096c7] backdrop-blur-md flex items-start gap-4"
           data-aos="fade-up"
           data-aos-delay="120"
         >
@@ -32,7 +35,7 @@ export default function WhyJango() {
         </div>
 
         <div
-          className="p-5 rounded-xl bg-white/3 border border-white/8 backdrop-blur-md flex items-start gap-4"
+          className="p-5 rounded-xl bg-[#0096c7] border border-[#0096c7] backdrop-blur-md flex items-start gap-4"
           data-aos="fade-up"
           data-aos-delay="160"
         >
@@ -48,7 +51,7 @@ export default function WhyJango() {
         </div>
 
         <div
-          className="p-5 rounded-xl bg-white/3 border border-white/8 backdrop-blur-md flex items-start gap-4"
+          className="p-5 rounded-xl bg-[#0096c7] border border-[#0096c7] backdrop-blur-md flex items-start gap-4"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -64,7 +67,7 @@ export default function WhyJango() {
         </div>
 
         <div
-          className="p-5 rounded-xl bg-white/3 border border-white/8 backdrop-blur-md flex items-start gap-4"
+          className="p-5 rounded-xl bg-[#0096c7] border border-[#0096c7] backdrop-blur-md flex items-start gap-4"
           data-aos="fade-up"
           data-aos-delay="240"
         >
