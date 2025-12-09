@@ -3,8 +3,8 @@
     🔗
   </div>
   <div className="flex-1">
-    <p className="text-lg font-semibold text-[#0077b6]">Why Jango?</p>
-    <p className="text-[#333]">
+    <p className="text-lg font-semibold text-[#0096c7]">Why Jango?</p>
+    <p className="text-[#222]">
       Jango is the ultimate solution for your business, offering unparalleled
       features and benefits.
     </p>
