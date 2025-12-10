@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
-import AosProvider from "./components/AosProvider";
+import AosProvider from "../components/AosProvider";
 
 const sora = Sora({
   variable: "--font-sora",

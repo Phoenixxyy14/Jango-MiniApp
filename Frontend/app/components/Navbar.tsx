@@ -1,17 +1,22 @@
-"use client";
-
 import { motion } from "framer-motion";
 
 export default function Navbar() {
   return (
-    <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-        <span className="font-semibold text-lg">Jango</span>
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        className="rounded-full px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm text-sm hover:scale-105 transition"
-      >
-        Launch App
-      </motion.button>
+    <nav className="flex items-center justify-between p-4 bg-white shadow">
+      <div className="flex items-center">
+        <div className="w-9 h-9 rounded-full bg-linear-to-r from-[#0096c7] to-[#005f8c] flex items-center justify-center text-sm font-bold">
+          J
+        </div>
+        <span className="ml-2 text-xl font-semibold">Jango</span>
+      </div>
+      <div>
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          className="rounded-full px-4 py-2 bg-[#0096c7] hover:bg-[#0077a3] text-white text-sm transition"
+        >
+          Launch App
+        </motion.button>
+      </div>
     </nav>
   );
 }
