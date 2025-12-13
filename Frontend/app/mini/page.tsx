@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { sdk } from "@farcaster/miniapp-sdk";
+import ConnectMenu from "@/components/ConnectMenu";
 
 export default function MiniApp() {
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function MiniApp() {
           Jango Mini App
         </h1>
         <button className="bg-[#0096c7] hover:bg-[#0077a3] text-white rounded-lg px-6 py-3 font-semibold transition">
-          Connect Wallet
+          <ConnectMenu />
         </button>
         <div className="w-full bg-white/60 rounded-xl p-4 flex flex-col items-center gap-2 border border-[#0096c7]/20">
           <div className="text-lg font-semibold text-[#0096c7]">
