@@ -74,10 +74,10 @@ export default function Hero() {
       <div className="w-full sm:w-80" data-aos="fade-left">
         <motion.div
           whileHover={{ y: -8 }}
-          className="bg-white/3 border border-white/8 backdrop-blur-md rounded-2xl p-5 shadow-2xl"
+          className="bg-white/70 border border-[#0096c7]/20 backdrop-blur-md rounded-2xl p-5 shadow-2xl"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-linear-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-r from-[#0096c7] to-[#005f8c] flex items-center justify-center">
               <svg
                 width="18"
                 height="18"
@@ -95,26 +95,28 @@ export default function Hero() {
               </svg>
             </div>
             <div>
-              <div className="text-xl font-bold">Day {streak}</div>
-              <div className="text-sm text-white/70">Current Streak</div>
+              <div className="text-xl font-bold text-[#0096c7]">
+                Day {streak}
+              </div>
+              <div className="text-sm text-[#0077b6]">Current Streak</div>
             </div>
           </div>
 
           <div className="rounded-xl overflow-hidden mb-4">
-            <div className="text-center font-bold py-3 bg-linear-to-r from-purple-500 to-purple-600">
+            <div className="text-center font-bold py-3 bg-linear-to-r from-[#0096c7] to-[#005f8c] text-white">
               $10.00
             </div>
-            <div className="text-xs text-white/70 text-center py-2">
+            <div className="text-xs text-[#0077b6] text-center py-2">
               1% of balance
             </div>
           </div>
-
+          {/* 
           <motion.button
             whileTap={{ scale: 0.98 }}
-            className="w-full rounded-lg py-2 bg-linear-to-r from-purple-500 to-purple-600 text-white font-semibold"
+            className="w-full rounded-lg py-2 bg-[#0096c7] hover:bg-[#0077a3] text-white font-semibold"
           >
             Save Now
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </div>
     </section>
