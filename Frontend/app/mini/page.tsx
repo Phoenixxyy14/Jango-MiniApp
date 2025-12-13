@@ -18,9 +18,9 @@ export default function MiniApp() {
         <h1 className="text-2xl font-bold text-[#0096c7] mb-2">
           Jango Mini App
         </h1>
-        <button className="bg-[#0096c7] hover:bg-[#0077a3] text-white rounded-lg px-6 py-3 font-semibold transition">
-          <ConnectMenu />
-        </button>
+        {/* <button className="bg-[#0096c7] hover:bg-[#0077a3] text-white rounded-lg px-6 py-3 font-semibold transition"> */}
+          <ConnectMenu /> 
+        {/* </button> */}
         <div className="w-full bg-white/60 rounded-xl p-4 flex flex-col items-center gap-2 border border-[#0096c7]/20">
           <div className="text-lg font-semibold text-[#0096c7]">
             Streak: <span className="font-bold text-[#005f8c]">0</span> days
