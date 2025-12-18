@@ -1,0 +1,8 @@
+{
+  "name": "Jango Savings Mini App",
+  "description": "Save 1% daily. Track your streaks on-chain.",
+  "app_url": "https://abcd1234.ngrok.io/mini",
+  "icon_url": "https://yourdomain.com/icon.png",
+  "splash_image_url": "https://yourdomain.com/splash.png",
+  "permissions": { "wallet": true }
+}

@@ -9,6 +9,7 @@ export default function Navbar() {
       <motion.button
         whileHover={{ scale: 1.03 }}
         className="rounded-full px-4 py-2 bg-[#0096c7] border border-white text-white backdrop-blur-sm text-sm hover:scale-105 transition"
+        onClick={() => {"/mini"}}
       >
         Launch App
       </motion.button>
