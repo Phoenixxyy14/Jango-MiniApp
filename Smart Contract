@@ -1,1 +1,121 @@
-The smart contract powering the Jango app 
+// what contract is to do:
+
+// users can deposit into the saving mini app, even as low as 1 cent
+// can withdraw anytime
+// other users can withdraw other users funds (based off the constructor function
+// users cann't withdraw more than their available balance
+// users funds will  be rerouted into aave and not remain in the contract
+//
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// what does each of these oZ contracts do? 
+import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
+import "openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
+
+interface ILendingPool {
+function deposit(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
+function withdraw(address asset, uint256 amount, address to) external returns (unit256);
+}
+
+contract JangoMiniApp is ReentrancyGuard {
+    using SafeERC20 for IERC20;
+
+    IERC20 public immutable asset;
+    IERC20  public immutable aToken; 
+    ILendingPool public immutable lendingPool;
+
+    uint256 public totalShares;    // total shares minted 
+    mapping(address => uint256) public shares0f;
+
+    uint256 public idleBalance; //token sitting the contract
+    uint256 public minDeposit; // minimal deposit allowed 
+    address public keeper;      // acct allowed to call invest/harvest
+
+    event Deposit(address indexed user, uint256 amount, uint256 sharesMinted);
+    event Withdrawal(address indexed user, uint256 amount, uint256 sharesBurned);
+    event Invest(uint256 amount); // moved idle -> aave
+    event Redeem(uint256 amount); // moved aave -> idle (for withdraw)
+    event Keeper(address indexed previous, address indexed next);
+    event MinDeposit(uint256 previous, uint256 next);
+
+    constructor(
+
+        // Is IERC20 the new token standard? 
+        IERC20 _asset,
+        IERC20 _aToken,
+        ILendingPool _lendingPool,
+        address _keeper,
+        uint256 _minDeposit
+    ) {
+        require(address(_asset) != address(0), "zero asset");
+        require(address(_aToken) != address(0), "zero aToken");
+        asset = _asset;
+        aToken = _aToken;
+        lendingPool = _lendingPool;
+        keeper = _keeper;
+        minDeposit = _minDeposit;
+    }
+
+    function totalAssets() public view returns (uint256) {
+        return idleBalance + aToken.balanceOf(address(this)); // aToken balance rep invested tokens (aToken has 1:1 but increases over time)
+    }
+
+    function balanceOf(address user) public view returns(uint256) {
+        if (totalShares == 0) return 0;
+        return (totalAssets() * sharesOf[user]) / totalShares; // maths logic
+    }
+
+    // for the deposit function, once token is recieved, ut gives back shares in return 
+    function deposit(uint256 amount) external nonReentrant {
+        require(amount > 0, "zero amount"); 
+        require(amount >= minDeposit, "below min Deposit");
+
+        uint256 before = asset.balanceOf(address(this));
+        asset.safeTransferFrom(msg.sender, address(this), amount);
+        uint256 after = asset.balanceOf(address(this));
+        uint256 received = after - before; // whats happening here biko?
+
+        // update idle 
+        idleBalance += received;
+
+        // mint shares pro-rata
+        uint256 sharesToMint;
+        uint256 _totalAssets = totalAssets() - received; // exclude the amt just added when computing ratio
+        if (totalShares == 0 || _totalAssets == 0) {
+            // first depositor: 1:1 shares
+            sharesToMint = received; // whats happening here?
+        } else {
+            // shares = received * totalShares / totalAssets
+            sharesToMint = (recieved * totalShares) / _totalAssets;
+            require(sharesToMint > 0, "deposit too small");
+        }
+
+        totalShares += sharesToMint
+        sharesOf[msg.sender] += sharesToMint;
+
+        emit Deposit(msg.sender, received, sharesToMint);
+    }
+
+    // for withdrawal, users can withdraw full balance 
+
+    function withdraw(uint256 amount) external nonReentrant {
+        // what exactly does this reentrant keyword does? i mean, does it almost completely rule out
+        // a potential reentrant attack? one of the contracts above is handling it potentially. 
+
+        require(amount > 0, "insufficient amount");
+        uint256 userShares = sharesOf[msg.sender];
+        require(userShares > 0, "no balance");
+
+        uint256 _totalAssets = totalAssets();
+        // computing shares equavilent to requested amout, mostly to avoid rounding attacks
+        uint256 sharesToBurn = (amount * totalShares + _totalAssets - 1) / _totalAssets;
+    }
+
+
+
+
+
+}
